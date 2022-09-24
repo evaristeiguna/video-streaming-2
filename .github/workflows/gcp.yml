@@ -27,10 +27,10 @@ jobs:
         gcloud auth configure-docker --quiet
     
     - name: Push Docker Image to Container Registry (GCR)
-    env:
-      GIT_TAGS: v0.1.0
-    run: |-
-      docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-      docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
-      docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
-      docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+      env:
+        GIT_TAGS: v0.1.0
+      run: |-
+        docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+        docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
+        docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest
+        docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$GIT_TAG
